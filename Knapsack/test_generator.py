@@ -1,6 +1,6 @@
 import random
 from math import floor
-from solution2 import solution
+from solution1 import solution
 # set a fixed random seed to re-create the same input file in the future 
 RANDOM_SEED = 42
 random.seed(RANDOM_SEED)
@@ -9,10 +9,6 @@ random.seed(RANDOM_SEED)
 TEST_NUM = 40
 
 # define constraints
-C_TOTAL_WEIGHT = 10**6
-C_WEIGHT = 10**5
-C_VALUE = 10**3
-C_NUM_OF_ITEM = 50
 CONSTRANINTS = {}
 CONSTRANINTS["total_weight"] = 10**6
 CONSTRANINTS["weight"] = 10**5
@@ -35,15 +31,15 @@ for p, p_num, p_tot_weight, p_weight in zip(PERCENTAGE["test_set"], PERCENTAGE["
 		
 		# Define a Problem
 		Problem = {}
-		Problem["W"] = random.randint(last_total_weight, floor(p*C_TOTAL_WEIGHT))
+		Problem["W"] = random.randint(last_total_weight, floor(p_tot_weight*CONSTRANINTS["total_weight"]))
 		Problem['v'] = []
 		Problem['w'] = []
 
 
-		for k in range(0, floor(p_num*C_NUM_OF_ITEM)):
-			Problem["v"].append(random.randint(0, C_VALUE))
-		for k in range(0, floor(p_num*C_NUM_OF_ITEM)):
-			Problem["w"].append(random.randint(last_weight, floor(p_weight*C_WEIGHT)))
+		for k in range(0, floor(p_num*CONSTRANINTS["number_of_item"])):
+			Problem["v"].append(random.randint(0, CONSTRANINTS["value"]))
+		for k in range(0, floor(p_num*CONSTRANINTS["number_of_item"])):
+			Problem["w"].append(random.randint(last_weight, floor(p_weight*CONSTRANINTS["weight"])))
 
 		# Write problem to file inp.txt
 		inp = open("inp.txt", 'a')
@@ -63,9 +59,9 @@ for p, p_num, p_tot_weight, p_weight in zip(PERCENTAGE["test_set"], PERCENTAGE["
 
 		print(f"TEST {i} CREATED!")
 
-	last_value = floor(p*C_VALUE)
-	last_weight = floor(p*C_WEIGHT)
-	last_num_of_item = floor(p*C_NUM_OF_ITEM)
-	last_total_weight = floor(p*C_TOTAL_WEIGHT)
+	last_value = floor(p*CONSTRANINTS["value"])
+	last_weight = floor(p_weight*CONSTRANINTS["weight"])
+	last_num_of_item = floor(p_num*CONSTRANINTS["number_of_item"])
+	last_total_weight = floor(p_tot_weight*CONSTRANINTS["total_weight"])
 	current_test = end
 
