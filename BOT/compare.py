@@ -2,7 +2,7 @@ import random
 import string
 from math import floor
 
-from solution2 import solution
+from solution3 import solution
 
 # set a fixed random seed to re-create the same input file in the future 
 RANDOM_SEED = 42
@@ -47,7 +47,8 @@ for p, p_n, p_a in zip(PERCENTAGE["test_set"], PERCENTAGE["n"], PERCENTAGE["a"])
 			assert res+"\n" == line
 			print(f"Passed test {i}")
 		except:
-			print(f"Failed Test {i}, Expect {line} , Got {res}")
+			print(f"Failed Test {i}, Expect {line}")
+			print(f"Your Solution: {res}")
 
 	last_n = floor(p_n * CONSTRAINTS["n"])
 	last_a = floor(p_a * CONSTRAINTS["a"])

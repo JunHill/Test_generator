@@ -29,6 +29,8 @@ last_n = last_a = 0
 
 for p, p_n, p_a in zip(PERCENTAGE["test_set"], PERCENTAGE["n"], PERCENTAGE["a"]):
 	end = floor(p * TEST_NUM)
+
+	# Start writing each test 
 	for i in range(current_test, end):
 		
 		# Define a Problem
